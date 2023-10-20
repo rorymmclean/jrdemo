@@ -105,15 +105,8 @@ if mydemo == 'Harry Potter':
         for x in docs:
             book_text = book_text + x.page_content + "\n"
 
-        conversation = ConversationChain(llm=llm)  
+        conversation = ConversationChain(llm=llm, verbose=True)  
 
-        # search_agent = initialize_agent(
-        #     llm=llm,
-        #     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-        #     handle_parsing_errors=True,
-        #     verbose=True,
-        #     return_intermediate_steps=True,
-        # )
 
         mytemplate=f"""You are a researcher and are helping to answer the users QUESTION below. Use the BOOK_TEXT to answer the question. If the BOOK_TEXT doesn't answer the question respond "I cannot answer your question".
 
