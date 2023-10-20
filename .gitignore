@@ -1,3 +1,4 @@
 .streamlit/secrets.toml
 commands.txt
 langchain.db
+pinecone.ipynb
