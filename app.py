@@ -74,8 +74,10 @@ with st.sidebar:
 
 ### --- Housekeeping ---
 openai_api_key = st.secrets["OPENAI_API_KEY"]
-llm = ChatOpenAI(model_name='gpt-4', openai_api_key=openai_api_key)
+pinecone_api_key = st.secrets["pinecone_api_key"]
+pinecone_environment = st.secrets["pinecone_environment"]
 
+llm = ChatOpenAI(model_name='gpt-4', openai_api_key=openai_api_key)
 
 
 ### --- Sidebar 1
@@ -94,7 +96,7 @@ if mydemo == 'Harry Potter':
         start = datetime.now()
         tz.write("Start: "+str(start))
         
-        pinecone.init(api_key="62fb11b7-e40c-4d06-9ffa-f6db606783b6", environment="gcp-starter")
+        pinecone.init(api_key=pinecone_api_key, environment=pinecone_environment)
         embeddings = OpenAIEmbeddings()
         mydocs = Pinecone.from_existing_index(index_name='stone', embedding=embeddings)
         docs = mydocs.similarity_search(
